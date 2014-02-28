@@ -1,6 +1,6 @@
 {
   "name": "angular-reverse-url",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/incuna/angular-reverse-url",
   "authors": [
     "Perry Roper <perryroper@gmail.com>"
@@ -20,7 +20,7 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "1.2.7",
-    "angular-route": "1.2.7"
+    "angular": "~1.2.7",
+    "angular-route": "~1.2.7"
   }
 }

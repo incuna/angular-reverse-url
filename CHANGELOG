@@ -1,3 +1,10 @@
+# 2.0.0
+
+* Added lodash as a dependency.
+* Memoized the reverseUrl filter. Massive performance benefits from this.
+  Every $digest cycle causes all URLs to be reversed, even if they haven't
+  changed.
+
 # 1.0.0
 
 * Initial release.

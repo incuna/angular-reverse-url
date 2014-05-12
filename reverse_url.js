@@ -9,8 +9,22 @@
                 var targetRoute;
                 angular.forEach($route.routes, function (route) {
                     if (route.controller === controller) {
-                        targetRoute = route.originalPath;
-                        return false;
+
+                        // we need to check we are passing the parameters in
+                        var success = true;
+                        var matches = regexp.exec(route.originalPath);
+
+                        // we can't allow empty params if this route is expecting params
+                        if ((matches !== null) && (matches.length > 0) && (angular.isUndefined(params) === true)) {
+                            success = false;
+                        }
+
+                        // TODO: check params exist for each match
+
+                        if (success === true) {
+                            targetRoute = route.originalPath;
+                            return;
+                        }
                     }
                 });
                 targetRoute = targetRoute.replace(regexp, function (match, pattern) {

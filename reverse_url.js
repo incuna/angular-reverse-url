@@ -15,7 +15,7 @@
                         var matches = regexp.exec(route.originalPath);
 
                         // we can't allow empty params if this route is expecting params
-                        if ((matches !== null) && (matches.length > 0) && (angular.isDefined(params) === false)) {
+                        if ((matches !== null) && (matches.length > 0) && (angular.isUndefined(params) === true)) {
                             success = false;
                         }
 
@@ -23,7 +23,7 @@
 
                         if (success === true) {
                             targetRoute = route.originalPath;
-                            return false;
+                            return;
                         }
                     }
                 });

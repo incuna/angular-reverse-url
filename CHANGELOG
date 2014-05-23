@@ -1,3 +1,11 @@
+# 2.0.2
+
+* Improved dependency matching in `bower.json` to reduce conflicts.
+
+# 2.0.1
+
+* Fixes an issue with matching routes which require params, when we have none.
+
 # 2.0.0
 
 * Added lodash as a dependency.

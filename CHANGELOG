@@ -1,3 +1,7 @@
+# 2.1.0
+
+* Allow routes to be resolved by the `name` property.
+
 # 2.0.2
 
 * Improved dependency matching in `bower.json` to reduce conflicts.

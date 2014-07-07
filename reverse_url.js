@@ -5,10 +5,10 @@
         .filter('reverseUrl', ['$route', function ($route) {
             var regexp = /:([A-Za-z0-9]*)\\*?\\??/g;
 
-            return _.memoize(function (controller, params) {
+            return _.memoize(function (name, params) {
                 var targetRoute;
                 angular.forEach($route.routes, function (route) {
-                    if (route.controller === controller) {
+                    if (route.controller === name || route.name === name) {
 
                         // we need to check we are passing the parameters in
                         var success = true;
@@ -31,8 +31,8 @@
                     return params[pattern];
                 });
                 return '#' + targetRoute;
-            }, function (controller, params) {
-                return controller + JSON.stringify(params);
+            }, function (name, params) {
+                return name + JSON.stringify(params);
             });
         }]);
 }());

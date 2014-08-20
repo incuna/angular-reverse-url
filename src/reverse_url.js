@@ -1,4 +1,4 @@
-(function (angular) {
+(function (angular, _) {
     'use strict';
 
     angular.module('angular-reverse-url', ['ngRoute'])
@@ -36,4 +36,4 @@
             });
         }]);
 
-}(window.angular));
+}(window.angular, window._));

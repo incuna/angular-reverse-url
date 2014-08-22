@@ -33,15 +33,15 @@
                 reverseUrl = $injector.get('$filter')('reverseUrl');
             }));
 
-            it('should correctly match to a basic route by controller', function () {                
+            it('should correctly match to a basic route by controller', function () {
                 expect(reverseUrl('TestController1')).toEqual('#/test-route-1/');
             });
 
-            it('should correctly match to a basic route by name', function () {                
+            it('should correctly match to a basic route by name', function () {
                 expect(reverseUrl('TestRoute2')).toEqual('#/test-route-2/');
             });
 
-            it('should correctly match to a route with params', function () {                
+            it('should correctly match to a route with params', function () {
                 expect(reverseUrl('TestController1', {param: 'foobar'})).toEqual('#/test-route-1/foobar/');
             });
 

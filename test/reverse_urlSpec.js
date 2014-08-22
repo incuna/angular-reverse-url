@@ -2,7 +2,8 @@
 
     'use strict';
 
-    var reverseUrl, $route;
+    var reverseUrl;
+    var $route;
     var routeMock = {};
 
     routeMock.routes = {

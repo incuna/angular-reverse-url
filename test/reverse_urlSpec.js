@@ -18,6 +18,10 @@
             name: 'TestRoute2',
             originalPath: '/test-route-2/'
         },
+        '/testRoute2/:params/': {
+            name: 'TestRoute2',
+            originalPath: '/test-route-2/:param/'
+        },
     };
 
     describe('Unit: angular-reverse-url', function () {
@@ -41,8 +45,12 @@
                 expect(reverseUrl('TestRoute2')).toEqual('#/test-route-2/');
             });
 
-            it('should correctly match to a route with params', function () {
+            it('should correctly match to a route by controller with params', function () {
                 expect(reverseUrl('TestController1', {param: 'foobar'})).toEqual('#/test-route-1/foobar/');
+            });
+
+            it('should correctly match to a route by name with params', function () {
+                expect(reverseUrl('TestRoute2', {param: 'foobar'})).toEqual('#/test-route-2/foobar/');
             });
 
             it('should log an error if a route is not found');

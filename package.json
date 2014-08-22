@@ -1,0 +1,30 @@
+{
+  "name": "angular-reverse-url",
+  "version": "2.1.0",
+  "description": "Creates URLs from your `$routeProvider` by controller name and URL fragments in Angular.",
+  "main": "src/reverse_url.js",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "karma": "^0.12.21",
+    "karma-jasmine": "^0.1.5",
+    "karma-phantomjs-launcher": "^0.1.4"
+  },
+  "scripts": {
+    "test": "karma start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/incuna/angular-reverse-url.git"
+  },
+  "keywords": [
+    "angularjs"
+  ],
+  "author": "Perry Roper <perryroper@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/incuna/angular-reverse-url/issues"
+  },
+  "homepage": "https://github.com/incuna/angular-reverse-url"
+}

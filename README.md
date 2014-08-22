@@ -10,3 +10,7 @@ Reverse URLs from your `$routeProvider` by controller name and URL fragments.
 # Installation
 
 `bower install angular-reverse-url`
+
+# Testing
+
+Tests use Karma and Jasmine. Install with `npm install`, and run with `karma start`.

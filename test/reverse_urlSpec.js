@@ -54,12 +54,6 @@
                 expect(reverseUrl('TestRoute2', {param: 'foobar'})).toEqual('#/test-route-2/foobar/');
             });
 
-            it('should log an error if a route is not found');
-
-            it('should log an error if params are required and missing');
-
-            it('should log an error if params keys are not found');
-
         });
 
     });

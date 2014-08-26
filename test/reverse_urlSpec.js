@@ -4,36 +4,7 @@
 
     var reverseUrl;
     var $route;
-    var routeMock = {};
-
-    routeMock.routes = {
-        '/testRoute1/': {
-            controller: 'TestController1',
-            originalPath: '/test-route-1/'
-        },
-        '/testRoute1/:params/': {
-            controller: 'TestController1',
-            originalPath: '/test-route-1/:param/'
-        },
-        '/testRoute2/': {
-            name: 'TestRoute2',
-            originalPath: '/test-route-2/'
-        },
-        '/testRoute2/:params/': {
-            name: 'TestRoute2',
-            originalPath: '/test-route-2/:param/'
-        },
-        '/testRoute3/': {
-            controller: 'TestController3',
-            name: 'TestRoute3',
-            originalPath: '/test-route-3/'
-        },
-        '/testRoute3/:params/': {
-            controller: 'TestController3',
-            name: 'TestRoute3',
-            originalPath: '/test-route-3/:param/'
-        }
-    };
+    var routeMock = { routes: {} };
 
     describe('Unit: angular-reverse-url', function () {
 
@@ -49,27 +20,65 @@
             }));
 
             it('should match a basic route by controller', function () {
-                expect(reverseUrl('TestController1')).toEqual('#/test-route-1/');
+                routeMock.routes = {
+                    '/testRoute/': {
+                        controller: 'TestController',
+                        originalPath: '/test-route/'
+                    }
+                };
+                expect(reverseUrl('TestController')).toEqual('#/test-route/');
             });
 
             it('should match a basic route by name', function () {
-                expect(reverseUrl('TestRoute2')).toEqual('#/test-route-2/');
+                routeMock.routes = {
+                    '/testRoute/': {
+                        name: 'TestRoute',
+                        originalPath: '/test-route/'
+                    }
+                };
+                expect(reverseUrl('TestRoute')).toEqual('#/test-route/');
             });
 
-            it('should match a route by controller when name and controller are specified', function () {
-                expect(reverseUrl('TestController3')).toEqual('#/test-route-3/');
+            it('should match a route by name when name and controller are specified', function () {
+                routeMock.routes = {
+                    '/testRoute1/': {
+                        name: 'TestRoute',
+                        controller: 'TestController',
+                        originalPath: '/test-route/'
+                    }
+                };
+                expect(reverseUrl('TestRoute')).toEqual('#/test-route/');
             });
 
             it('should match a route with params by controller', function () {
-                expect(reverseUrl('TestController1', {param: 'foobar'})).toEqual('#/test-route-1/foobar/');
+                routeMock.routes = {
+                    '/testRoute/:params/': {
+                        controller: 'TestController',
+                        originalPath: '/test-route/:param/'
+                    }
+                };
+                expect(reverseUrl('TestController', {param: 'foobar'})).toEqual('#/test-route/foobar/');
             });
 
             it('should match a route with params by name', function () {
-                expect(reverseUrl('TestRoute2', {param: 'foobar'})).toEqual('#/test-route-2/foobar/');
+                routeMock.routes = {
+                    '/testRoute/:params/': {
+                        name: 'TestRoute',
+                        originalPath: '/test-route/:param/'
+                    }
+                };
+                expect(reverseUrl('TestRoute', {param: 'foobar'})).toEqual('#/test-route/foobar/');
             });
 
-            it('should match a route by with params controller when name and controller are specified', function () {
-                expect(reverseUrl('TestController3', {param: 'foobar'})).toEqual('#/test-route-3/foobar/');
+            it('should match a route with params by name when name and controller are specified', function () {
+               routeMock.routes = {
+                    '/testRoute/:params/': {
+                        name: 'TestRoute',
+                        controller: 'TestController',
+                        originalPath: '/test-route/:param/'
+                    }
+                };
+                expect(reverseUrl('TestRoute', {param: 'foobar'})).toEqual('#/test-route/foobar/');
             });
 
         });

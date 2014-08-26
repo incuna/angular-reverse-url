@@ -8,7 +8,7 @@
             return _.memoize(function (name, params) {
                 var targetRoute;
                 angular.forEach($route.routes, function (route) {
-                    if (route.controller === name || route.name === name) {
+                    if (route.name === name || route.controller === name) {
 
                         // we need to check we are passing the parameters in
                         var success = true;

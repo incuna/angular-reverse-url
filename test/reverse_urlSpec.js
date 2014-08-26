@@ -23,6 +23,16 @@
             name: 'TestRoute2',
             originalPath: '/test-route-2/:param/'
         },
+        '/testRoute3/': {
+            controller: 'TestController3',
+            name: 'TestRoute3',
+            originalPath: '/test-route-3/'
+        },
+        '/testRoute3/:params/': {
+            controller: 'TestController3',
+            name: 'TestRoute3',
+            originalPath: '/test-route-3/:param/'
+        }
     };
 
     describe('Unit: angular-reverse-url', function () {
@@ -34,24 +44,32 @@
         describe('reverseUrl filter', function () {
 
             beforeEach(inject(function ($injector) {
-                $route = $injector.get('$route')
+                $route = $injector.get('$route');
                 reverseUrl = $injector.get('$filter')('reverseUrl');
             }));
 
-            it('should correctly match to a basic route by controller', function () {
+            it('should match a basic route by controller', function () {
                 expect(reverseUrl('TestController1')).toEqual('#/test-route-1/');
             });
 
-            it('should correctly match to a basic route by name', function () {
+            it('should match a basic route by name', function () {
                 expect(reverseUrl('TestRoute2')).toEqual('#/test-route-2/');
             });
 
-            it('should correctly match to a route by controller with params', function () {
+            it('should match a route by controller when name and controller are specified', function () {
+                expect(reverseUrl('TestController3')).toEqual('#/test-route-3/');
+            });
+
+            it('should match a route with params by controller', function () {
                 expect(reverseUrl('TestController1', {param: 'foobar'})).toEqual('#/test-route-1/foobar/');
             });
 
-            it('should correctly match to a route by name with params', function () {
+            it('should match a route with params by name', function () {
                 expect(reverseUrl('TestRoute2', {param: 'foobar'})).toEqual('#/test-route-2/foobar/');
+            });
+
+            it('should match a route by with params controller when name and controller are specified', function () {
+                expect(reverseUrl('TestController3', {param: 'foobar'})).toEqual('#/test-route-3/foobar/');
             });
 
         });

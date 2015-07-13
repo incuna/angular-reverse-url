@@ -27,6 +27,9 @@
                         }
                     }
                 });
+                if (angular.isUndefined(targetRoute)) {
+                    return '';
+                }
                 targetRoute = targetRoute.replace(regexp, function (match, pattern) {
                     return params[pattern];
                 });

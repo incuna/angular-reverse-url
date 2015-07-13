@@ -54,6 +54,10 @@
                 expect(reverseUrl('TestRoute2', {param: 'foobar'})).toEqual('#/test-route-2/foobar/');
             });
 
+            it('should return the empty string if the route does not match', function () {
+                expect(reverseUrl('MissingController')).toEqual('');
+            });
+
         });
 
     });

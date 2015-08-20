@@ -60,6 +60,23 @@
 
         });
 
+        describe('html5 mode on', function() {
+
+            beforeEach(module(function($locationProvider) {
+                $locationProvider.html5Mode(true);
+            }));
+
+            beforeEach(inject(function($injector) {
+                $route = $injector.get('$route')
+                reverseUrl = $injector.get('$filter')('reverseUrl');
+            }));
+
+            it('should not prefix the route by "#" if in html5 mode', function($location) {
+                expect(reverseUrl('TestController1')).toEqual('/test-route-1/');
+            });
+
+        });
+
     });
 
 }());

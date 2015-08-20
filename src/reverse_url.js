@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('angular-reverse-url', ['ngRoute'])
-        .filter('reverseUrl', ['$route', function ($route) {
+        .filter('reverseUrl', ['$route', '$location', function ($route, $location) {
             var regexp = /:([A-Za-z0-9]*)\\*?\\??/g;
 
             return _.memoize(function (name, params) {
@@ -33,7 +33,12 @@
                 targetRoute = targetRoute.replace(regexp, function (match, pattern) {
                     return params[pattern];
                 });
-                return '#' + targetRoute;
+
+                if (!$location.$$html5) {
+                    targetRoute = '#'.concat(targetRoute);
+                }
+
+                return targetRoute;
             }, function (name, params) {
                 return name + JSON.stringify(params);
             });

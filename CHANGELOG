@@ -1,3 +1,7 @@
+# 2.3.0
+
+* Only prefix the route with `#` when html5 mode is disabled.
+
 # 2.2.0
 
 * Return the empty string if no route matches.

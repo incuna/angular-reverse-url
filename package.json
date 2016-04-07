@@ -1,6 +1,6 @@
 {
   "name": "angular-reverse-url",
-  "version": "2.1.0",
+  "version": "2.4.0",
   "description": "Creates URLs from your `$routeProvider` by controller name and URL fragments in Angular.",
   "main": "src/reverse_url.js",
   "directories": {
